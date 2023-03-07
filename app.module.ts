@@ -9,6 +9,7 @@ import { HomeComponent } from './home/home.component';
 import { HeaderComponent } from './header/header.component';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 import { appReducer } from './state/app.reducer';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -17,7 +18,7 @@ import { appReducer } from './state/app.reducer';
     HeaderComponent,
   ],
   imports: [
-    BrowserModule,FormsModule,
+    BrowserModule,FormsModule,HttpClientModule,
     AppRoutingModule,StoreModule.forRoot({}), StoreDevtoolsModule.instrument({
       maxAge: 25, // Retains last 25 states
       logOnly: !isDevMode(), // Restrict extension to log-only mode
