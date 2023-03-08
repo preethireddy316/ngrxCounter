@@ -1,15 +1,17 @@
+import { Observable } from 'rxjs';
 import { HttpClient } from "@angular/common/http";
-import { Store } from "@ngrx/store";
 import { environment } from "src/environments/environment";
-import { AppState } from "../state/app.state";
+import { Injectable } from '@angular/core';
 
-
+@Injectable({
+    providedIn: 'root',
+  })
 export class AuthService{
-constructor(private http:HttpClient,private store: Store<AppState>){
-
+constructor(private http:HttpClient){
 }
 
-login(email:string,password:string){
-    this.http.post(`https://identitytoolkit.googleapis.com/v1/accounts:signInWithCustomToken?key=${environment.FIRBASE_KEY}`,{email,password,returnSecureToken:true})
+login(email:string,password:string):Observable<any>{
+  console.log('success')
+    return this.http.post(`https://identitytoolkit.googleapis.com/v1/accounts:signInWithCustomToken?key=AIzaSyA2KOcNfsh20OeIO0ooV_HEAvIsMBGV_Oo}`,{email,password,returnSecureToken:true})
 }
 }
