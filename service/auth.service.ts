@@ -12,6 +12,7 @@ constructor(private http:HttpClient){
 
 login(email:string,password:string):Observable<any>{
   console.log('success')
-    return this.http.post(`https://identitytoolkit.googleapis.com/v1/accounts:signInWithCustomToken?key=AIzaSyA2KOcNfsh20OeIO0ooV_HEAvIsMBGV_Oo}`,{email,password,returnSecureToken:true})
+  
+    return this.http.post('https://ngrx-f6351-default-rtdb.firebaseio.com/v1/accounts:signInWithPassword?key=AIzaSyA2KOcNfsh20OeIO0ooV_HEAvIsMBGV_Oo',{email,password}, { withCredentials: true })
 }
 }

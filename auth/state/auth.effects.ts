@@ -41,8 +41,10 @@ export class AuthEffects {
  l=(action: { email: string; password: string; } & TypedAction<"[auth page] login start">)=>{
     return this.authService.login(action.email, action.password).pipe(
         map(() => {
+
+          console.log('success in effects')
+
           return loginSuccess();
-          console.log('success')
         })
       );
   }
