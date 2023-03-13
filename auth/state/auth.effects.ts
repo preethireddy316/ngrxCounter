@@ -33,6 +33,7 @@ import { Injectable } from '@angular/core';
 import { AuthService } from 'src/app/service/auth.service';
 import { TypedAction } from '@ngrx/store/src/models';
 import { Observable } from 'rxjs';
+import { User } from 'src/app/model/user.model';
 
 @Injectable()
 export class AuthEffects {
@@ -40,11 +41,11 @@ export class AuthEffects {
 
  l=(action: { email: string; password: string; } & TypedAction<"[auth page] login start">)=>{
     return this.authService.login(action.email, action.password).pipe(
-        map(() => {
+        map((data) => {
 
           console.log('success in effects')
-
-          return loginSuccess();
+          const user=this.authService.formatUser(data)
+          return loginSuccess({user});
         })
       );
   }
